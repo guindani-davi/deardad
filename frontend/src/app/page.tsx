@@ -10,7 +10,8 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3001");
+        const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3001";
+        const response = await fetch(backendUrl);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
