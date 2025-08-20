@@ -1,4 +1,10 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "devCommand": "npm run dev"
+  "builds": [
+    { "src": "frontend/next.config.ts", "use": "@vercel/next" },
+    { "src": "backend/src/main.ts", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "backend/src/main.ts" },
+    { "src": "/(.*)", "dest": "$1" }
+  ]
 }
